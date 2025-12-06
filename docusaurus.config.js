@@ -7,15 +7,15 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://abdulwahid126.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/AI-Humanoid-Robotics-Books/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'panaversity',
-  projectName: 'physical-ai-humanoid-robotics-book',
+  organizationName: 'AbdulWahid126',
+  projectName: 'AI-Humanoid-Robotics-Books',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'warn',
