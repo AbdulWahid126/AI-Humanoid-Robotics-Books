@@ -1,0 +1,28 @@
+{
+  "id": "module3/nav2",
+  "title": "Nav2 Path Planning",
+  "description": "🗺️ Introduction to Nav2",
+  "source": "@site/docs/module3/nav2.mdx",
+  "sourceDirName": "module3",
+  "slug": "/module3/nav2",
+  "permalink": "/docs/module3/nav2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module3/nav2.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "Nav2 Path Planning"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Isaac ROS",
+    "permalink": "/docs/module3/isaac-ros"
+  },
+  "next": {
+    "title": "Hands-On Lab",
+    "permalink": "/docs/module3/hands-on-lab"
+  }
+}

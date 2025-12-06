@@ -1,0 +1,89 @@
+---
+sidebar_position: 5
+title: Hands-On Lab
+---
+
+# Module 2: Hands-On Lab
+
+## 🎯 Lab Objectives
+
+Build a complete simulation environment with:
+- Gazebo world with obstacles
+- Humanoid robot with sensors
+- Sensor data processing
+- Autonomous navigation
+
+## 🛠️ Lab Setup
+
+```bash
+# Install Gazebo
+sudo apt install ros-humble-gazebo-ros-pkgs
+
+# Create simulation package
+ros2 pkg create --build-type ament_python humanoid_simulation
+```
+
+## 📝 Exercise: Complete Simulation Environment
+
+### Step 1: Create World File
+
+Create `worlds/humanoid_world.sdf`:
+
+```xml
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="humanoid_world">
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+    
+    <!-- Add obstacles -->
+    <model name="obstacle1">
+      <pose>3 0 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1 1 1</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1 1 1</size></box></geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
+```
+
+### Step 2: Launch Simulation
+
+```python
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        IncludeLaunchDescription(
+            'path/to/gazebo.launch.py',
+            launch_arguments={'world': 'humanoid_world.sdf'}.items()
+        ),
+        Node(
+            package='humanoid_simulation',
+            executable='sensor_processor',
+            name='sensor_processor'
+        ),
+    ])
+```
+
+## 🎯 Expected Results
+
+- ✅ Gazebo world loads with obstacles
+- ✅ Robot spawns with all sensors active
+- ✅ Sensor data published to ROS 2 topics
+- ✅ Robot navigates autonomously
+
+---
+
+**Next Module**: [Module 3: NVIDIA Isaac →](../module3/index)

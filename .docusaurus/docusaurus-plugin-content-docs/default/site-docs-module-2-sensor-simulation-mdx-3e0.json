@@ -1,0 +1,28 @@
+{
+  "id": "module2/sensor-simulation",
+  "title": "Sensor Simulation",
+  "description": "📡 Sensor Types",
+  "source": "@site/docs/module2/sensor-simulation.mdx",
+  "sourceDirName": "module2",
+  "slug": "/module2/sensor-simulation",
+  "permalink": "/docs/module2/sensor-simulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module2/sensor-simulation.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "Sensor Simulation"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Unity Rendering",
+    "permalink": "/docs/module2/unity-rendering"
+  },
+  "next": {
+    "title": "Hands-On Lab",
+    "permalink": "/docs/module2/hands-on-lab"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "module4/capstone-project",
+  "title": "Capstone Project",
+  "description": "🎯 Project Overview",
+  "source": "@site/docs/module4/capstone-project.mdx",
+  "sourceDirName": "module4",
+  "slug": "/module4/capstone-project",
+  "permalink": "/docs/module4/capstone-project",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module4/capstone-project.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "Capstone Project"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cognitive Planning with LLMs",
+    "permalink": "/docs/module4/cognitive-planning"
+  },
+  "next": {
+    "title": "Hands-On Lab",
+    "permalink": "/docs/module4/hands-on-lab"
+  }
+}

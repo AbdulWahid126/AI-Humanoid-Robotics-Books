@@ -1,0 +1,83 @@
+---
+sidebar_position: 5
+title: Hands-On Lab
+---
+
+# Module 3: Hands-On Lab
+
+## 🎯 Lab Objectives
+
+Integrate Isaac Sim, Isaac ROS, and Nav2 for autonomous humanoid navigation.
+
+## 🛠️ Lab Setup
+
+```bash
+# Install Isaac ROS
+sudo apt install ros-humble-isaac-ros-visual-slam ros-humble-isaac-ros-dnn-inference
+
+# Install Nav2
+sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup
+```
+
+## 📝 Complete Navigation System
+
+```python
+import rclpy
+from rclpy.node import Node
+from nav2_simple_commander.robot_navigator import BasicNavigator
+from geometry_msgs.msg import PoseStamped
+
+class AutonomousHumanoid(Node):
+    def __init__(self):
+        super().__init__('autonomous_humanoid')
+        self.navigator = BasicNavigator()
+        
+        # Wait for Nav2
+        self.navigator.waitUntilNav2Active()
+        
+        # Define waypoints
+        self.waypoints = [
+            (2.0, 0.0, 0.0),
+            (2.0, 2.0, 1.57),
+            (0.0, 2.0, 3.14),
+            (0.0, 0.0, 0.0)
+        ]
+        
+        self.navigate_waypoints()
+    
+    def navigate_waypoints(self):
+        for x, y, theta in self.waypoints:
+            goal = self.create_pose(x, y, theta)
+            self.navigator.goToPose(goal)
+            
+            while not self.navigator.isTaskComplete():
+                rclpy.spin_once(self, timeout_sec=0.1)
+            
+            self.get_logger().info(f'Reached waypoint ({x}, {y})')
+    
+    def create_pose(self, x, y, theta):
+        pose = PoseStamped()
+        pose.header.frame_id = 'map'
+        pose.header.stamp = self.get_clock().now().to_msg()
+        pose.pose.position.x = x
+        pose.pose.position.y = y
+        pose.pose.orientation.z = theta
+        return pose
+
+def main():
+    rclpy.init()
+    node = AutonomousHumanoid()
+    rclpy.spin(node)
+    rclpy.shutdown()
+```
+
+## 🎯 Expected Results
+
+- ✅ Isaac Sim environment running
+- ✅ VSLAM tracking robot position
+- ✅ Nav2 planning collision-free paths
+- ✅ Humanoid navigating autonomously
+
+---
+
+**Next Module**: [Module 4: Vision-Language-Action →](../module4/index)

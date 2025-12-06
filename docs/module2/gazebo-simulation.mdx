@@ -1,0 +1,93 @@
+---
+sidebar_position: 2
+title: Gazebo Simulation
+---
+
+# Physics Simulation with Gazebo
+
+## 🌍 Introduction to Gazebo
+
+**Gazebo** is a powerful 3D robot simulator that provides accurate physics simulation, realistic sensor feedback, and integration with ROS 2.
+
+## 🏗️ Creating a Gazebo World
+
+```xml
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="humanoid_world">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <!-- Add obstacles -->
+    <model name="box_obstacle">
+      <pose>2 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>1 1 1</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>1 1 1</size></box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
+```
+
+## ⚙️ Physics Engines
+
+Gazebo supports multiple physics engines:
+- **ODE** (default): Fast, good for most applications
+- **Bullet**: Better collision detection
+- **DART**: Advanced dynamics
+- **Simbody**: Biomechanical simulations
+
+## 🤖 Spawning Robots
+
+```python
+import rclpy
+from rclpy.node import Node
+from gazebo_msgs.srv import SpawnEntity
+import os
+
+class RobotSpawner(Node):
+    def __init__(self):
+        super().__init__('robot_spawner')
+        self.client = self.create_client(SpawnEntity, '/spawn_entity')
+        
+        while not self.client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Waiting for spawn service...')
+        
+        self.spawn_robot()
+    
+    def spawn_robot(self):
+        request = SpawnEntity.Request()
+        request.name = 'my_humanoid'
+        request.xml = open('path/to/robot.urdf', 'r').read()
+        request.initial_pose.position.z = 1.0
+        
+        future = self.client.call_async(request)
+        rclpy.spin_until_future_complete(self, future)
+        
+        if future.result() is not None:
+            self.get_logger().info('Robot spawned successfully!')
+```
+
+## 🎯 Key Takeaways
+
+- Gazebo provides realistic physics simulation
+- Supports multiple physics engines
+- Integrates seamlessly with ROS 2
+- Essential for testing before hardware deployment
+
+---
+
+**Next**: [Unity Rendering →](./unity-rendering)

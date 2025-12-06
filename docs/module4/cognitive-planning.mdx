@@ -1,0 +1,147 @@
+---
+sidebar_position: 3
+title: Cognitive Planning with LLMs
+---
+
+# Cognitive Planning: LLMs for Robotic Task Planning
+
+## 🧠 LLMs as Robot Brains
+
+Large Language Models can translate natural language into executable robot actions through cognitive reasoning.
+
+## 🚀 LLM-Based Task Planner
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+import openai
+import json
+
+class CognitivePlanner(Node):
+    def __init__(self):
+        super().__init__('cognitive_planner')
+        
+        # Setup OpenAI (or use local LLM)
+        openai.api_key = "your-api-key"
+        
+        # Subscribe to high-level commands
+        self.create_subscription(
+            String,
+            '/voice_commands',
+            self.plan_task,
+            10
+        )
+        
+        # Publish action sequence
+        self.plan_pub = self.create_publisher(String, '/action_plan', 10)
+        
+    def plan_task(self, msg):
+        command = msg.data
+        
+        # Create prompt for LLM
+        prompt = f"""
+        You are a humanoid robot controller. Given the command: "{command}"
+        
+        Generate a sequence of ROS 2 actions to accomplish this task.
+        Available actions:
+        - navigate_to(x, y)
+        - detect_object(object_name)
+        - grasp_object()
+        - place_object(x, y)
+        - open_gripper()
+        - close_gripper()
+        
+        Return a JSON array of actions with parameters.
+        """
+        
+        # Get plan from LLM
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a robot task planner."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        
+        plan = response.choices[0].message.content
+        self.get_logger().info(f'Generated plan: {plan}')
+        
+        # Publish plan
+        plan_msg = String()
+        plan_msg.data = plan
+        self.plan_pub.publish(plan_msg)
+```
+
+## 🎯 Action Executor
+
+```python
+class ActionExecutor(Node):
+    def __init__(self):
+        super().__init__('action_executor')
+        
+        self.create_subscription(
+            String,
+            '/action_plan',
+            self.execute_plan,
+            10
+        )
+        
+        self.navigator = BasicNavigator()
+        
+    def execute_plan(self, msg):
+        try:
+            actions = json.loads(msg.data)
+            
+            for action in actions:
+                action_type = action['type']
+                params = action.get('params', {})
+                
+                if action_type == 'navigate_to':
+                    self.navigate_to(params['x'], params['y'])
+                elif action_type == 'grasp_object':
+                    self.grasp_object()
+                elif action_type == 'detect_object':
+                    self.detect_object(params['object_name'])
+                
+                self.get_logger().info(f'Completed: {action_type}')
+                
+        except Exception as e:
+            self.get_logger().error(f'Execution failed: {e}')
+    
+    def navigate_to(self, x, y):
+        goal = self.create_goal_pose(x, y)
+        self.navigator.goToPose(goal)
+        while not self.navigator.isTaskComplete():
+            rclpy.spin_once(self, timeout_sec=0.1)
+    
+    def grasp_object(self):
+        # Execute grasping sequence
+        self.get_logger().info('Grasping object')
+```
+
+## 🎯 Example Interaction
+
+**User**: "Clean the room"
+
+**LLM Plan**:
+```json
+[
+  {"type": "navigate_to", "params": {"x": 2.0, "y": 1.0}},
+  {"type": "detect_object", "params": {"object_name": "trash"}},
+  {"type": "grasp_object", "params": {}},
+  {"type": "navigate_to", "params": {"x": 0.0, "y": 0.0}},
+  {"type": "place_object", "params": {"x": 0.0, "y": 0.0}}
+]
+```
+
+## 🎯 Key Takeaways
+
+- LLMs enable natural language task planning
+- Cognitive reasoning about physical constraints
+- Multi-step action sequences
+- Bridge between language and robotics
+
+---
+
+**Next**: [Capstone Project →](./capstone-project)

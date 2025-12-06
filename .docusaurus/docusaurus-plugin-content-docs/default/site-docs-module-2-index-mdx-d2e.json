@@ -1,0 +1,28 @@
+{
+  "id": "module2/index",
+  "title": "Module 2 Overview",
+  "description": "🎯 Module Overview",
+  "source": "@site/docs/module2/index.mdx",
+  "sourceDirName": "module2",
+  "slug": "/module2/",
+  "permalink": "/docs/module2/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module2/index.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "Module 2 Overview"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hands-On Lab",
+    "permalink": "/docs/module1/hands-on-lab"
+  },
+  "next": {
+    "title": "Gazebo Simulation",
+    "permalink": "/docs/module2/gazebo-simulation"
+  }
+}

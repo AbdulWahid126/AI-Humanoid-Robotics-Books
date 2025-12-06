@@ -1,0 +1,28 @@
+{
+  "id": "module4/voice-to-action",
+  "title": "Voice-to-Action",
+  "description": "🎤 Introduction to Speech Recognition",
+  "source": "@site/docs/module4/voice-to-action.mdx",
+  "sourceDirName": "module4",
+  "slug": "/module4/voice-to-action",
+  "permalink": "/docs/module4/voice-to-action",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module4/voice-to-action.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Voice-to-Action"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 4 Overview",
+    "permalink": "/docs/module4/"
+  },
+  "next": {
+    "title": "Cognitive Planning with LLMs",
+    "permalink": "/docs/module4/cognitive-planning"
+  }
+}

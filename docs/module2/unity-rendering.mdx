@@ -1,0 +1,59 @@
+---
+sidebar_position: 3
+title: Unity Rendering
+---
+
+# High-Fidelity Rendering with Unity
+
+## 🎨 Why Unity for Robotics?
+
+**Unity** provides photorealistic rendering and human-robot interaction capabilities that complement Gazebo's physics simulation.
+
+## 🔗 Unity Robotics Hub
+
+Unity's Robotics Hub enables ROS 2 integration:
+
+```csharp
+using Unity.Robotics.ROSTCPConnector;
+using RosMessageTypes.Geometry;
+
+public class RobotController : MonoBehaviour
+{
+    ROSConnection ros;
+    
+    void Start()
+    {
+        ros = ROSConnection.GetOrCreateInstance();
+        ros.Subscribe<TwistMsg>("/cmd_vel", MoveRobot);
+    }
+    
+    void MoveRobot(TwistMsg msg)
+    {
+        transform.Translate(
+            msg.linear.x * Time.deltaTime,
+            0,
+            0
+        );
+    }
+}
+```
+
+## 👤 Human Avatars
+
+Unity excels at realistic human simulation for HRI (Human-Robot Interaction):
+
+- Realistic animations
+- Natural movements
+- Facial expressions
+- Gesture recognition
+
+## 🎯 Key Takeaways
+
+- Unity provides photorealistic rendering
+- Excellent for human-robot interaction
+- Integrates with ROS 2 via Robotics Hub
+- Complements Gazebo for complete simulation
+
+---
+
+**Next**: [Sensor Simulation →](./sensor-simulation)

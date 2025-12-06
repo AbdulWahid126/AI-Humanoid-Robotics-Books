@@ -1,0 +1,28 @@
+{
+  "id": "module2/hands-on-lab",
+  "title": "Hands-On Lab",
+  "description": "🎯 Lab Objectives",
+  "source": "@site/docs/module2/hands-on-lab.mdx",
+  "sourceDirName": "module2",
+  "slug": "/module2/hands-on-lab",
+  "permalink": "/docs/module2/hands-on-lab",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module2/hands-on-lab.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Hands-On Lab"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Sensor Simulation",
+    "permalink": "/docs/module2/sensor-simulation"
+  },
+  "next": {
+    "title": "Module 3 Overview",
+    "permalink": "/docs/module3/"
+  }
+}

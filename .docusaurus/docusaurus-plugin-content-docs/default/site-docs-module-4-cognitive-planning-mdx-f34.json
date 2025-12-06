@@ -1,0 +1,28 @@
+{
+  "id": "module4/cognitive-planning",
+  "title": "Cognitive Planning with LLMs",
+  "description": "🧠 LLMs as Robot Brains",
+  "source": "@site/docs/module4/cognitive-planning.mdx",
+  "sourceDirName": "module4",
+  "slug": "/module4/cognitive-planning",
+  "permalink": "/docs/module4/cognitive-planning",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module4/cognitive-planning.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Cognitive Planning with LLMs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Voice-to-Action",
+    "permalink": "/docs/module4/voice-to-action"
+  },
+  "next": {
+    "title": "Capstone Project",
+    "permalink": "/docs/module4/capstone-project"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "module2/unity-rendering",
+  "title": "Unity Rendering",
+  "description": "🎨 Why Unity for Robotics?",
+  "source": "@site/docs/module2/unity-rendering.mdx",
+  "sourceDirName": "module2",
+  "slug": "/module2/unity-rendering",
+  "permalink": "/docs/module2/unity-rendering",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module2/unity-rendering.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Unity Rendering"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gazebo Simulation",
+    "permalink": "/docs/module2/gazebo-simulation"
+  },
+  "next": {
+    "title": "Sensor Simulation",
+    "permalink": "/docs/module2/sensor-simulation"
+  }
+}

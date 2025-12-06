@@ -1,0 +1,421 @@
+---
+sidebar_position: 5
+title: Hands-On Lab
+---
+
+# Module 1: Hands-On Lab
+
+## 🎯 Lab Objectives
+
+In this hands-on lab, you'll build a complete ROS 2 system for a simulated humanoid robot. You'll integrate everything you've learned:
+
+- Creating ROS 2 nodes and topics
+- Integrating Python AI agents
+- Defining robot structure with URDF
+- Controlling a humanoid robot
+
+## 🛠️ Lab Setup
+
+### Prerequisites
+
+```bash
+# Ensure ROS 2 Humble is installed
+source /opt/ros/humble/setup.bash
+
+# Create workspace
+mkdir -p ~/humanoid_ws/src
+cd ~/humanoid_ws/src
+
+# Create package
+ros2 pkg create --build-type ament_python humanoid_controller \
+  --dependencies rclpy std_msgs sensor_msgs geometry_msgs
+```
+
+## 📝 Exercise 1: Build a Simple Humanoid Controller
+
+### Step 1: Create the URDF Model
+
+Create `humanoid_ws/src/humanoid_controller/urdf/simple_humanoid.urdf`:
+
+```xml
+<?xml version="1.0"?>
+<robot name="simple_humanoid">
+  
+  <link name="base_footprint"/>
+  
+  <link name="torso">
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.5"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.2 0.4 0.8 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="15.0"/>
+      <inertia ixx="0.4" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.2"/>
+    </inertial>
+  </link>
+  
+  <joint name="base_to_torso" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="torso"/>
+    <origin xyz="0 0 0.5"/>
+  </joint>
+  
+  <!-- Add head, arms, and legs as shown in previous chapter -->
+  
+</robot>
+```
+
+### Step 2: Create a Balance Controller
+
+Create `humanoid_controller/balance_controller.py`:
+
+```python
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Imu, JointState
+from geometry_msgs.msg import Twist
+import math
+
+class BalanceController(Node):
+    def __init__(self):
+        super().__init__('balance_controller')
+        
+        # Subscribe to IMU for balance feedback
+        self.imu_sub = self.create_subscription(
+            Imu,
+            '/imu/data',
+            self.imu_callback,
+            10
+        )
+        
+        # Subscribe to velocity commands
+        self.cmd_sub = self.create_subscription(
+            Twist,
+            '/cmd_vel',
+            self.cmd_callback,
+            10
+        )
+        
+        # Publish joint commands
+        self.joint_pub = self.create_publisher(
+            JointState,
+            '/joint_commands',
+            10
+        )
+        
+        # State variables
+        self.current_pitch = 0.0
+        self.current_roll = 0.0
+        self.target_velocity = Twist()
+        
+        # Control loop
+        self.timer = self.create_timer(0.01, self.control_loop)  # 100Hz
+        
+        self.get_logger().info('Balance Controller initialized')
+    
+    def imu_callback(self, msg):
+        # Extract orientation from IMU
+        # Simplified: convert quaternion to euler angles
+        self.current_pitch = self.quaternion_to_pitch(msg.orientation)
+        self.current_roll = self.quaternion_to_roll(msg.orientation)
+    
+    def cmd_callback(self, msg):
+        self.target_velocity = msg
+    
+    def control_loop(self):
+        # Simple PD controller for balance
+        kp_pitch = 2.0
+        kd_pitch = 0.5
+        
+        # Calculate ankle torque to maintain balance
+        ankle_torque = -kp_pitch * self.current_pitch
+        
+        # Calculate hip angles for walking
+        hip_angle = self.calculate_walking_gait()
+        
+        # Publish joint commands
+        joint_msg = JointState()
+        joint_msg.header.stamp = self.get_clock().now().to_msg()
+        joint_msg.name = ['right_hip', 'left_hip', 'right_ankle', 'left_ankle']
+        joint_msg.position = [hip_angle, -hip_angle, ankle_torque, ankle_torque]
+        
+        self.joint_pub.publish(joint_msg)
+    
+    def calculate_walking_gait(self):
+        # Simple sinusoidal gait
+        t = self.get_clock().now().nanoseconds / 1e9
+        frequency = 1.0  # 1 Hz
+        amplitude = 0.3  # radians
+        
+        return amplitude * math.sin(2 * math.pi * frequency * t)
+    
+    def quaternion_to_pitch(self, q):
+        # Simplified conversion
+        return 2.0 * (q.w * q.y - q.z * q.x)
+    
+    def quaternion_to_roll(self, q):
+        return 2.0 * (q.w * q.x + q.y * q.z)
+
+def main(args=None):
+    rclpy.init(args=args)
+    controller = BalanceController()
+    rclpy.spin(controller)
+    controller.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 📝 Exercise 2: AI-Based Gait Planning
+
+Create `humanoid_controller/gait_planner.py`:
+
+```python
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Twist
+from std_msgs.msg import String
+import numpy as np
+
+class GaitPlanner(Node):
+    def __init__(self):
+        super().__init__('gait_planner')
+        
+        # Subscribe to high-level commands
+        self.command_sub = self.create_subscription(
+            String,
+            '/robot_command',
+            self.command_callback,
+            10
+        )
+        
+        # Publish velocity commands
+        self.vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        
+        # Gait parameters
+        self.gait_state = 'idle'
+        self.timer = self.create_timer(0.1, self.plan_gait)
+        
+        self.get_logger().info('Gait Planner ready')
+    
+    def command_callback(self, msg):
+        command = msg.data.lower()
+        
+        if command == 'walk_forward':
+            self.gait_state = 'walking'
+        elif command == 'stop':
+            self.gait_state = 'idle'
+        elif command == 'turn_left':
+            self.gait_state = 'turning_left'
+        elif command == 'turn_right':
+            self.gait_state = 'turning_right'
+        
+        self.get_logger().info(f'Command received: {command} → State: {self.gait_state}')
+    
+    def plan_gait(self):
+        cmd = Twist()
+        
+        if self.gait_state == 'walking':
+            cmd.linear.x = 0.3  # m/s
+        elif self.gait_state == 'turning_left':
+            cmd.angular.z = 0.5  # rad/s
+        elif self.gait_state == 'turning_right':
+            cmd.angular.z = -0.5
+        # idle: all zeros
+        
+        self.vel_pub.publish(cmd)
+
+def main(args=None):
+    rclpy.init(args=args)
+    planner = GaitPlanner()
+    rclpy.spin(planner)
+    planner.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 📝 Exercise 3: Vision-Based Object Tracking
+
+Create `humanoid_controller/object_tracker.py`:
+
+```python
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
+from geometry_msgs.msg import Point
+from cv_bridge import CvBridge
+import cv2
+import numpy as np
+
+class ObjectTracker(Node):
+    def __init__(self):
+        super().__init__('object_tracker')
+        
+        self.bridge = CvBridge()
+        
+        # Subscribe to camera
+        self.image_sub = self.create_subscription(
+            Image,
+            '/camera/image_raw',
+            self.image_callback,
+            10
+        )
+        
+        # Publish object position
+        self.position_pub = self.create_publisher(
+            Point,
+            '/object_position',
+            10
+        )
+        
+        self.get_logger().info('Object Tracker initialized')
+    
+    def image_callback(self, msg):
+        # Convert to OpenCV
+        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        
+        # Detect red objects (example)
+        hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+        lower_red = np.array([0, 100, 100])
+        upper_red = np.array([10, 255, 255])
+        mask = cv2.inRange(hsv, lower_red, upper_red)
+        
+        # Find contours
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        
+        if contours:
+            # Find largest contour
+            largest = max(contours, key=cv2.contourArea)
+            M = cv2.moments(largest)
+            
+            if M['m00'] > 0:
+                cx = int(M['m10'] / M['m00'])
+                cy = int(M['m01'] / M['m00'])
+                
+                # Publish position
+                position = Point()
+                position.x = float(cx)
+                position.y = float(cy)
+                position.z = cv2.contourArea(largest)
+                
+                self.position_pub.publish(position)
+                self.get_logger().info(f'Object at ({cx}, {cy})')
+
+def main(args=None):
+    rclpy.init(args=args)
+    tracker = ObjectTracker()
+    rclpy.spin(tracker)
+    tracker.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+## 🚀 Running the Complete System
+
+### Build the Workspace
+
+```bash
+cd ~/humanoid_ws
+colcon build
+source install/setup.bash
+```
+
+### Launch All Nodes
+
+Create `launch/humanoid_system.launch.py`:
+
+```python
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='humanoid_controller',
+            executable='balance_controller',
+            name='balance_controller'
+        ),
+        Node(
+            package='humanoid_controller',
+            executable='gait_planner',
+            name='gait_planner'
+        ),
+        Node(
+            package='humanoid_controller',
+            executable='object_tracker',
+            name='object_tracker'
+        ),
+    ])
+```
+
+### Run the System
+
+```bash
+ros2 launch humanoid_controller humanoid_system.launch.py
+```
+
+## 🧪 Testing Your System
+
+### Test 1: Send Commands
+
+```bash
+# In a new terminal
+ros2 topic pub /robot_command std_msgs/msg/String "data: 'walk_forward'" --once
+ros2 topic pub /robot_command std_msgs/msg/String "data: 'stop'" --once
+```
+
+### Test 2: Monitor Topics
+
+```bash
+# Monitor joint commands
+ros2 topic echo /joint_commands
+
+# Monitor velocity commands
+ros2 topic echo /cmd_vel
+
+# Visualize with rqt
+rqt_graph
+```
+
+## 🎯 Challenge Exercises
+
+1. **Add Obstacle Avoidance**: Integrate a laser scanner and implement obstacle avoidance
+2. **Improve Gait**: Implement a more sophisticated walking algorithm (ZMP-based)
+3. **Multi-Object Tracking**: Track multiple objects simultaneously
+4. **State Machine**: Add a comprehensive state machine for complex behaviors
+
+## 📊 Expected Results
+
+After completing this lab, you should be able to:
+
+- ✅ Create a complete ROS 2 workspace
+- ✅ Define a humanoid robot in URDF
+- ✅ Implement balance control
+- ✅ Plan walking gaits
+- ✅ Track objects with vision
+- ✅ Integrate multiple nodes into a system
+
+## 🎓 Summary
+
+Congratulations! You've completed Module 1. You now understand:
+
+- ROS 2 architecture and communication patterns
+- Python integration with rclpy
+- URDF for robot modeling
+- Building complete robotic systems
+
+---
+
+**Next Module**: [Module 2: The Digital Twin →](../module2/index)

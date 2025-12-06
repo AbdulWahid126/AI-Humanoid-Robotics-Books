@@ -1,0 +1,133 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module1/hands-on-lab",
+              "path": "/docs/module1/hands-on-lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module1/index",
+              "path": "/docs/module1/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module1/python-agents",
+              "path": "/docs/module1/python-agents",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module1/ros2-fundamentals",
+              "path": "/docs/module1/ros2-fundamentals",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module1/urdf-humanoids",
+              "path": "/docs/module1/urdf-humanoids",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module2/gazebo-simulation",
+              "path": "/docs/module2/gazebo-simulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module2/hands-on-lab",
+              "path": "/docs/module2/hands-on-lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module2/index",
+              "path": "/docs/module2/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module2/sensor-simulation",
+              "path": "/docs/module2/sensor-simulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module2/unity-rendering",
+              "path": "/docs/module2/unity-rendering",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module3/hands-on-lab",
+              "path": "/docs/module3/hands-on-lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module3/index",
+              "path": "/docs/module3/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module3/isaac-ros",
+              "path": "/docs/module3/isaac-ros",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module3/isaac-sim",
+              "path": "/docs/module3/isaac-sim",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module3/nav2",
+              "path": "/docs/module3/nav2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module4/capstone-project",
+              "path": "/docs/module4/capstone-project",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module4/cognitive-planning",
+              "path": "/docs/module4/cognitive-planning",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module4/hands-on-lab",
+              "path": "/docs/module4/hands-on-lab",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module4/index",
+              "path": "/docs/module4/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "module4/voice-to-action",
+              "path": "/docs/module4/voice-to-action",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

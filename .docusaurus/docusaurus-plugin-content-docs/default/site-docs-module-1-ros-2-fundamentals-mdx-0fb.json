@@ -1,0 +1,28 @@
+{
+  "id": "module1/ros2-fundamentals",
+  "title": "ROS 2 Fundamentals",
+  "description": "🏗️ ROS 2 Architecture",
+  "source": "@site/docs/module1/ros2-fundamentals.mdx",
+  "sourceDirName": "module1",
+  "slug": "/module1/ros2-fundamentals",
+  "permalink": "/docs/module1/ros2-fundamentals",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module1/ros2-fundamentals.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "ROS 2 Fundamentals"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 1 Overview",
+    "permalink": "/docs/module1/"
+  },
+  "next": {
+    "title": "Python Agents with ROS 2",
+    "permalink": "/docs/module1/python-agents"
+  }
+}

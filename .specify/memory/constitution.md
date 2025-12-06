@@ -1,55 +1,41 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report:
+Version change:  → 1.0.0
+List of modified principles:
+  - PRINCIPLE_1_NAME → Content Quality & Accuracy
+  - PRINCIPLE_2_NAME → Writing Style & Formatting
+  - PRINCIPLE_3_NAME → AI Agent Workflow
+  - PRINCIPLE_4_NAME → Modularity & Maintainability
+  - PRINCIPLE_5_NAME → Testing & Validation
+Added sections: None
+Removed sections: None
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ✅ updated
+  - .specify/templates/spec-template.md: ✅ updated
+  - .specify/templates/tasks-template.md: ✅ updated
+  - .specify/templates/commands/*.md: ✅ updated
+Follow-up TODOs: None
+-->
+# Physical AI & Humanoid Robotics Project Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Content Quality & Accuracy
+All AI/robotics knowledge presented in the book, RAG chatbot, and related workflows MUST be correct, factually verified, and reflect current understanding in the field. Speculative ideas or future projections MUST be clearly marked as such. Consistent terminology for key concepts such as sensors, actuators, ROS, Isaac, and LLMs MUST be maintained across all content to ensure clarity and avoid confusion.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Writing Style & Formatting
+The writing style for all content, including the book, RAG chatbot responses, and documentation, MUST match the tone and clarity of ai-native.panaversity.org: simple, clear, and technically accurate. Content MUST utilize short paragraphs, bullet points, callouts, and code blocks for enhanced readability. All outputs intended for the book MUST be in Docusaurus-compatible MDX format. Each chapter, or equivalent content unit, MUST include clearly defined Key Takeaways and RAG Questions to facilitate understanding and information retrieval.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. AI Agent Workflow
+All AI subagents operating within the project's workflows (content generation, translation, personalization, coding) MUST strictly adhere to the rules and principles defined in this Constitution. There MUST be a clear separation between the specification phase (what needs to be done) and the implementation phase (how it is done). Human review checkpoints ARE required at critical junctures of all AI-driven workflows, especially before publishing content or deploying code, to ensure quality and compliance.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Modularity & Maintainability
+The project components, including book chapters, translation services, personalization features, and the RAG chatbot, MUST be designed and implemented as independent, loosely coupled modules. Updates or modifications to one module SHOULD NOT introduce breaking changes or inconsistencies in other modules. This principle ensures the long-term maintainability and scalability of the entire system.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-### [PRINCIPLE_6_NAME]
-
-
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Testing & Validation
+All content (book chapters, RAG responses, translations) MUST undergo rigorous testing for clarity, correctness, and readability. This includes verification against factual sources and grammar checks. All generated or modified code MUST include basic tests and sanity checks to ensure functionality and prevent regressions. Automated testing frameworks SHOULD be utilized where feasible to enforce these standards.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution serves as the foundational document for the "Physical AI & Humanoid Robotics" project, superseding all other informal practices. Amendments to this Constitution MUST follow a documented procedure, require explicit approval from designated stakeholders, and include a migration plan for any affected processes or artifacts. All pull requests and code reviews MUST explicitly verify compliance with the principles outlined herein. Any increase in complexity MUST be rigorously justified and documented.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06

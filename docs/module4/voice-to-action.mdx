@@ -1,0 +1,144 @@
+---
+sidebar_position: 2
+title: Voice-to-Action
+---
+
+# Voice-to-Action with OpenAI Whisper
+
+## 🎤 Introduction to Speech Recognition
+
+**OpenAI Whisper** is a state-of-the-art speech recognition model that enables robots to understand voice commands.
+
+## 🚀 Setting Up Whisper
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+import whisper
+import sounddevice as sd
+import numpy as np
+
+class VoiceCommandNode(Node):
+    def __init__(self):
+        super().__init__('voice_command_node')
+        
+        # Load Whisper model
+        self.model = whisper.load_model("base")
+        
+        # Publish commands
+        self.command_pub = self.create_publisher(
+            String,
+            '/voice_commands',
+            10
+        )
+        
+        # Start listening
+        self.timer = self.create_timer(5.0, self.listen_and_transcribe)
+        
+        self.get_logger().info('Voice Command Node ready')
+    
+    def listen_and_transcribe(self):
+        # Record audio (5 seconds)
+        duration = 5
+        sample_rate = 16000
+        
+        self.get_logger().info('Listening...')
+        audio = sd.rec(
+            int(duration * sample_rate),
+            samplerate=sample_rate,
+            channels=1,
+            dtype='float32'
+        )
+        sd.wait()
+        
+        # Transcribe with Whisper
+        audio_np = audio.flatten()
+        result = self.model.transcribe(audio_np)
+        command = result["text"]
+        
+        self.get_logger().info(f'Heard: "{command}"')
+        
+        # Publish command
+        msg = String()
+        msg.data = command
+        self.command_pub.publish(msg)
+
+def main():
+    rclpy.init()
+    node = VoiceCommandNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+```
+
+## 🎯 Intent Extraction
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+from geometry_msgs.msg import Twist
+import re
+
+class IntentParser(Node):
+    def __init__(self):
+        super().__init__('intent_parser')
+        
+        # Subscribe to voice commands
+        self.create_subscription(
+            String,
+            '/voice_commands',
+            self.parse_command,
+            10
+        )
+        
+        # Publish robot actions
+        self.action_pub = self.create_publisher(String, '/robot_action', 10)
+        self.vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        
+    def parse_command(self, msg):
+        command = msg.data.lower()
+        
+        # Simple intent matching
+        if 'move forward' in command or 'go forward' in command:
+            self.execute_move_forward()
+        elif 'turn left' in command:
+            self.execute_turn_left()
+        elif 'turn right' in command:
+            self.execute_turn_right()
+        elif 'stop' in command:
+            self.execute_stop()
+        elif 'pick up' in command or 'grab' in command:
+            self.execute_grasp()
+        else:
+            self.get_logger().warn(f'Unknown command: {command}')
+    
+    def execute_move_forward(self):
+        cmd = Twist()
+        cmd.linear.x = 0.5
+        self.vel_pub.publish(cmd)
+        self.get_logger().info('Moving forward')
+    
+    def execute_turn_left(self):
+        cmd = Twist()
+        cmd.angular.z = 0.5
+        self.vel_pub.publish(cmd)
+        self.get_logger().info('Turning left')
+    
+    def execute_grasp(self):
+        action = String()
+        action.data = 'grasp_object'
+        self.action_pub.publish(action)
+        self.get_logger().info('Executing grasp')
+```
+
+## 🎯 Key Takeaways
+
+- Whisper enables accurate speech recognition
+- Intent parsing maps commands to actions
+- Real-time voice control for robots
+- Foundation for natural human-robot interaction
+
+---
+
+**Next**: [Cognitive Planning →](./cognitive-planning)

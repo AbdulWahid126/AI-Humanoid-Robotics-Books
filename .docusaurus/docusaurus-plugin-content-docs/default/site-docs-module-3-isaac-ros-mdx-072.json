@@ -1,0 +1,28 @@
+{
+  "id": "module3/isaac-ros",
+  "title": "Isaac ROS",
+  "description": "⚡ What is Isaac ROS?",
+  "source": "@site/docs/module3/isaac-ros.mdx",
+  "sourceDirName": "module3",
+  "slug": "/module3/isaac-ros",
+  "permalink": "/docs/module3/isaac-ros",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module3/isaac-ros.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Isaac ROS"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NVIDIA Isaac Sim",
+    "permalink": "/docs/module3/isaac-sim"
+  },
+  "next": {
+    "title": "Nav2 Path Planning",
+    "permalink": "/docs/module3/nav2"
+  }
+}

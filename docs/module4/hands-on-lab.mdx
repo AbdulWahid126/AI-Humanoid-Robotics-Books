@@ -1,0 +1,112 @@
+---
+sidebar_position: 5
+title: Hands-On Lab
+---
+
+# Module 4: Hands-On Lab
+
+## 🎯 Lab Objectives
+
+Integrate all components into a working autonomous humanoid system.
+
+## 🛠️ Complete System Setup
+
+```bash
+# Install dependencies
+pip install openai-whisper sounddevice openai
+
+# Setup workspace
+cd ~/humanoid_ws
+colcon build
+source install/setup.bash
+```
+
+## 📝 Launch Complete System
+
+Create `launch/autonomous_system.launch.py`:
+
+```python
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # Voice recognition
+        Node(
+            package='humanoid_vla',
+            executable='voice_command_node',
+            name='voice_command'
+        ),
+        
+        # Cognitive planner
+        Node(
+            package='humanoid_vla',
+            executable='cognitive_planner',
+            name='planner'
+        ),
+        
+        # Action executor
+        Node(
+            package='humanoid_vla',
+            executable='action_executor',
+            name='executor'
+        ),
+        
+        # Navigation
+        Node(
+            package='nav2_bringup',
+            executable='navigation_launch.py',
+            name='navigation'
+        ),
+    ])
+```
+
+## 🚀 Run the System
+
+```bash
+# Terminal 1: Launch Isaac Sim
+./isaac-sim.sh
+
+# Terminal 2: Launch ROS 2 system
+ros2 launch humanoid_vla autonomous_system.launch.py
+
+# Terminal 3: Monitor
+ros2 topic echo /robot_action
+```
+
+## 🎯 Test Commands
+
+Try these voice commands:
+- "Move forward 2 meters"
+- "Find the red box"
+- "Pick up the object"
+- "Clean the room"
+- "Bring me the cup"
+
+## 📊 Expected Results
+
+- ✅ Voice commands transcribed accurately
+- ✅ LLM generates logical action plans
+- ✅ Robot executes plans successfully
+- ✅ Complete tasks autonomously
+
+## 🏆 Course Complete!
+
+**Congratulations!** You've mastered:
+- ROS 2 fundamentals
+- Simulation with Gazebo and Unity
+- NVIDIA Isaac platform
+- Vision-Language-Action systems
+
+You're now ready to build the future of **Physical AI and Humanoid Robotics**! 🤖🚀
+
+---
+
+## 📚 Further Learning
+
+- Explore advanced manipulation techniques
+- Study bipedal locomotion algorithms
+- Implement multi-robot coordination
+- Deploy to real hardware
+
+**Thank you for completing this course!**

@@ -1,0 +1,28 @@
+{
+  "id": "module3/isaac-sim",
+  "title": "NVIDIA Isaac Sim",
+  "description": "🌟 Introduction to Isaac Sim",
+  "source": "@site/docs/module3/isaac-sim.mdx",
+  "sourceDirName": "module3",
+  "slug": "/module3/isaac-sim",
+  "permalink": "/docs/module3/isaac-sim",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module3/isaac-sim.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "NVIDIA Isaac Sim"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Module 3 Overview",
+    "permalink": "/docs/module3/"
+  },
+  "next": {
+    "title": "Isaac ROS",
+    "permalink": "/docs/module3/isaac-ros"
+  }
+}
