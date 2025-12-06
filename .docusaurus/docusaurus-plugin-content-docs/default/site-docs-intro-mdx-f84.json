@@ -5,7 +5,7 @@
   "source": "@site/docs/intro.mdx",
   "sourceDirName": ".",
   "slug": "/intro",
-  "permalink": "/docs/intro",
+  "permalink": "/AI-Humanoid-Robotics-Books/docs/intro",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/intro.mdx",
@@ -19,6 +19,6 @@
   "sidebar": "tutorialSidebar",
   "next": {
     "title": "Module 1 Overview",
-    "permalink": "/docs/module1/"
+    "permalink": "/AI-Humanoid-Robotics-Books/docs/module1/"
   }
 }

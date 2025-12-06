@@ -3,175 +3,175 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug', '73d'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/config',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/config', '231'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/content',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/content', 'eac'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/globalData',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/globalData', 'cfd'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/metadata',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/metadata', '88d'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/registry',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/registry', 'aa1'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
+    path: '/AI-Humanoid-Robotics-Books/__docusaurus/debug/routes',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/__docusaurus/debug/routes', 'e9a'),
     exact: true
   },
   {
-    path: '/docs',
-    component: ComponentCreator('/docs', 'ceb'),
+    path: '/AI-Humanoid-Robotics-Books/docs',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs', '07e'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', 'af1'),
+        path: '/AI-Humanoid-Robotics-Books/docs',
+        component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs', 'cb2'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', '217'),
+            path: '/AI-Humanoid-Robotics-Books/docs',
+            component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs', 'f2f'),
             routes: [
               {
-                path: '/docs/intro',
-                component: ComponentCreator('/docs/intro', '89a'),
+                path: '/AI-Humanoid-Robotics-Books/docs/intro',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/intro', '647'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module1/',
-                component: ComponentCreator('/docs/module1/', '31b'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module1/',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module1/', 'b22'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module1/hands-on-lab',
-                component: ComponentCreator('/docs/module1/hands-on-lab', '387'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module1/hands-on-lab',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module1/hands-on-lab', 'e5d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module1/python-agents',
-                component: ComponentCreator('/docs/module1/python-agents', '8b9'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module1/python-agents',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module1/python-agents', '3f8'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module1/ros2-fundamentals',
-                component: ComponentCreator('/docs/module1/ros2-fundamentals', '142'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module1/ros2-fundamentals',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module1/ros2-fundamentals', 'ee1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module1/urdf-humanoids',
-                component: ComponentCreator('/docs/module1/urdf-humanoids', '02a'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module1/urdf-humanoids',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module1/urdf-humanoids', '7ac'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module2/',
-                component: ComponentCreator('/docs/module2/', '860'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module2/',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module2/', '9bb'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module2/gazebo-simulation',
-                component: ComponentCreator('/docs/module2/gazebo-simulation', '7ba'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module2/gazebo-simulation',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module2/gazebo-simulation', '7eb'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module2/hands-on-lab',
-                component: ComponentCreator('/docs/module2/hands-on-lab', '268'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module2/hands-on-lab',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module2/hands-on-lab', 'c1d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module2/sensor-simulation',
-                component: ComponentCreator('/docs/module2/sensor-simulation', '57a'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module2/sensor-simulation',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module2/sensor-simulation', '7ec'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module2/unity-rendering',
-                component: ComponentCreator('/docs/module2/unity-rendering', '9b2'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module2/unity-rendering',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module2/unity-rendering', '28e'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module3/',
-                component: ComponentCreator('/docs/module3/', 'acf'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module3/',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module3/', '94d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module3/hands-on-lab',
-                component: ComponentCreator('/docs/module3/hands-on-lab', 'c93'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module3/hands-on-lab',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module3/hands-on-lab', 'eb9'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module3/isaac-ros',
-                component: ComponentCreator('/docs/module3/isaac-ros', '3b0'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module3/isaac-ros',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module3/isaac-ros', 'e06'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module3/isaac-sim',
-                component: ComponentCreator('/docs/module3/isaac-sim', '051'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module3/isaac-sim',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module3/isaac-sim', '16b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module3/nav2',
-                component: ComponentCreator('/docs/module3/nav2', '449'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module3/nav2',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module3/nav2', '7a5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module4/',
-                component: ComponentCreator('/docs/module4/', '24f'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module4/',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module4/', '9ac'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module4/capstone-project',
-                component: ComponentCreator('/docs/module4/capstone-project', 'af5'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module4/capstone-project',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module4/capstone-project', '2cc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module4/cognitive-planning',
-                component: ComponentCreator('/docs/module4/cognitive-planning', '65a'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module4/cognitive-planning',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module4/cognitive-planning', 'e6b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module4/hands-on-lab',
-                component: ComponentCreator('/docs/module4/hands-on-lab', 'ca8'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module4/hands-on-lab',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module4/hands-on-lab', '19c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/module4/voice-to-action',
-                component: ComponentCreator('/docs/module4/voice-to-action', '5e6'),
+                path: '/AI-Humanoid-Robotics-Books/docs/module4/voice-to-action',
+                component: ComponentCreator('/AI-Humanoid-Robotics-Books/docs/module4/voice-to-action', 'ca1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -182,8 +182,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', '2e1'),
+    path: '/AI-Humanoid-Robotics-Books/',
+    component: ComponentCreator('/AI-Humanoid-Robotics-Books/', 'a37'),
     exact: true
   },
   {

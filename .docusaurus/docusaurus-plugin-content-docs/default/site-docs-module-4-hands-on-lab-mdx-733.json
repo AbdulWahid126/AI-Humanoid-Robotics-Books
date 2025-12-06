@@ -5,7 +5,7 @@
   "source": "@site/docs/module4/hands-on-lab.mdx",
   "sourceDirName": "module4",
   "slug": "/module4/hands-on-lab",
-  "permalink": "/docs/module4/hands-on-lab",
+  "permalink": "/AI-Humanoid-Robotics-Books/docs/module4/hands-on-lab",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/panaversity/physical-ai-humanoid-robotics-book/tree/main/docs/module4/hands-on-lab.mdx",
@@ -19,6 +19,6 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Capstone Project",
-    "permalink": "/docs/module4/capstone-project"
+    "permalink": "/AI-Humanoid-Robotics-Books/docs/module4/capstone-project"
   }
 }
