@@ -5,10 +5,11 @@ from typing import List
 class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
     
-    # OpenAI Configuration
-    OPENAI_API_KEY: str
-    EMBEDDING_MODEL: str = "text-embedding-3-small"
-    CHAT_MODEL: str = "gpt-4-turbo-preview"
+    # API Configuration (Using OpenAI SDK with Gemini)
+    GEMINI_API_KEY: str
+    GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
+    EMBEDDING_MODEL: str = "text-embedding-004"
+    CHAT_MODEL: str = "gemini-1.5-flash"
     MAX_TOKENS: int = 500
     TEMPERATURE: float = 0.7
     

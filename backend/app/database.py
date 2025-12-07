@@ -5,8 +5,13 @@ from app.config import settings
 from datetime import datetime
 import uuid
 
-# Create engine
-engine = create_engine(settings.DATABASE_URL)
+# Create engine - explicitly use psycopg driver
+# Convert postgresql:// to postgresql+psycopg:// if needed
+database_url = settings.DATABASE_URL
+if database_url.startswith("postgresql://"):
+    database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
+
+engine = create_engine(database_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 

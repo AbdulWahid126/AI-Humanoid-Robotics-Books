@@ -21,6 +21,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Configure OpenAI client for Gemini
+client = OpenAI(
+    api_key=settings.GEMINI_API_KEY,
+    base_url=settings.GEMINI_BASE_URL
+)
+
 
 def extract_metadata_from_path(file_path: str) -> dict:
     """Extract module and chapter information from file path"""
@@ -47,13 +53,13 @@ def ingest_book_content():
     """Read all MDX files and ingest into Qdrant"""
     print("🚀 Starting content ingestion...")
     
-    # Initialize clients
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+    # Initialize vector store
     vector_store = VectorStore()
     
     # Create collection
     print("📦 Creating Qdrant collection...")
-    vector_store.create_collection()
+    vector_store.create_collection(vector_size=768)  # Gemini text-embedding-004 size
+
     
     # Find all MDX files
     docs_path = Path(__file__).parent.parent.parent / "docs"
@@ -82,7 +88,7 @@ def ingest_book_content():
                 print(f"   ⚠️  No chunks created, skipping")
                 continue
             
-            # Generate embeddings in batches
+            # Generate embeddings using OpenAI SDK (Gemini endpoint)
             print(f"   🔢 Generating embeddings...")
             embeddings = []
             

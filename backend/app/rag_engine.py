@@ -5,19 +5,25 @@ from typing import List, Dict, Optional
 
 
 class RAGEngine:
-    """Retrieval-Augmented Generation engine"""
+    """Retrieval-Augmented Generation engine using OpenAI SDK with Gemini API"""
     
     def __init__(self):
-        self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
+        # Configure OpenAI client to use Gemini's endpoint
+        self.client = OpenAI(
+            api_key=settings.GEMINI_API_KEY,
+            base_url=settings.GEMINI_BASE_URL
+        )
         self.vector_store = VectorStore()
+
     
     def generate_embedding(self, text: str) -> List[float]:
-        """Generate embedding for text using OpenAI"""
+        """Generate embedding for text using OpenAI SDK (Gemini endpoint)"""
         response = self.client.embeddings.create(
             model=settings.EMBEDDING_MODEL,
             input=text
         )
         return response.data[0].embedding
+
     
     def retrieve_context(
         self, 
@@ -69,7 +75,7 @@ class RAGEngine:
         context: str,
         selected_text: Optional[str] = None
     ) -> str:
-        """Generate response using OpenAI Chat"""
+        """Generate response using OpenAI SDK (Gemini endpoint)"""
         
         # Build system message
         system_message = """You are an expert assistant for the Physical AI & Humanoid Robotics textbook. 
@@ -102,6 +108,7 @@ Guidelines:
         )
         
         return response.choices[0].message.content
+
     
     def chat(
         self, 
