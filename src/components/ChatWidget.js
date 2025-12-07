@@ -10,7 +10,7 @@ export default function ChatWidget() {
     const messagesEndRef = useRef(null);
 
     // API endpoint - update this with your deployed backend URL
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+    const API_URL = 'http://localhost:8000';
 
     // Capture text selection
     useEffect(() => {
