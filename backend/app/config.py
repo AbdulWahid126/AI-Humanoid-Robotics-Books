@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     # API Configuration (Using OpenAI SDK with Gemini)
     GEMINI_API_KEY: str
     GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
-    EMBEDDING_MODEL: str = "text-embedding-004"
+    EMBEDDING_MODEL: str = "text-embedding-004"  # Gemini embedding model
     CHAT_MODEL: str = "gemini-1.5-flash"
     MAX_TOKENS: int = 500
     TEMPERATURE: float = 0.7
