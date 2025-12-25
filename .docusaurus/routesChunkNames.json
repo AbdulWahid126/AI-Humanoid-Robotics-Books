@@ -1,106 +1,149 @@
 {
-  "/AI-Humanoid-Robotics-Books/docs-07e": {
-    "__comp": "5e95c892",
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug-73d": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
     "__context": {
-      "plugin": "aba21aa0"
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/config-231": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/content-eac": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    },
+    "__props": "__props---ai-humanoid-robotics-books-docusaurus-debug-content-2-f-1-f89"
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/globalData-cfd": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/metadata-88d": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/registry-aa1": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/__docusaurus/debug/routes-e9a": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docusaurus-debugb-38-067"
+    }
+  },
+  "/AI-Humanoid-Robotics-Books/docs-07e": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---ai-humanoid-robotics-books-docsaba-bef"
     }
   },
   "/AI-Humanoid-Robotics-Books/docs-cb2": {
-    "__comp": "a7bd4aaa",
-    "__props": "f02d7084"
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---ai-humanoid-robotics-books-docsf-02-545"
   },
   "/AI-Humanoid-Robotics-Books/docs-f2f": {
-    "__comp": "a94703ab"
+    "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/AI-Humanoid-Robotics-Books/docs/intro-647": {
-    "__comp": "17896441",
-    "content": "f8409a7e"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-introf-84-b6e"
   },
   "/AI-Humanoid-Robotics-Books/docs/module1/-b22": {
-    "__comp": "17896441",
-    "content": "04bfa6d0"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-1-04-b-31d"
   },
   "/AI-Humanoid-Robotics-Books/docs/module1/hands-on-lab-e5d": {
-    "__comp": "17896441",
-    "content": "14892409"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-1-hands-on-lab-148-8bd"
   },
   "/AI-Humanoid-Robotics-Books/docs/module1/python-agents-3f8": {
-    "__comp": "17896441",
-    "content": "ddf58179"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-1-python-agentsddf-df9"
   },
   "/AI-Humanoid-Robotics-Books/docs/module1/ros2-fundamentals-ee1": {
-    "__comp": "17896441",
-    "content": "0fb09b95"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-1-ros-2-fundamentals-0-fb-503"
   },
   "/AI-Humanoid-Robotics-Books/docs/module1/urdf-humanoids-7ac": {
-    "__comp": "17896441",
-    "content": "0aa0b292"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-1-urdf-humanoids-0-aa-fe4"
   },
   "/AI-Humanoid-Robotics-Books/docs/module2/-9bb": {
-    "__comp": "17896441",
-    "content": "d2e43329"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-2-d-2-e-fbc"
   },
   "/AI-Humanoid-Robotics-Books/docs/module2/gazebo-simulation-7eb": {
-    "__comp": "17896441",
-    "content": "a3b1e6b0"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-2-gazebo-simulationa-3-b-f59"
   },
   "/AI-Humanoid-Robotics-Books/docs/module2/hands-on-lab-c1d": {
-    "__comp": "17896441",
-    "content": "6a29cf2c"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-2-hands-on-lab-6-a-2-69d"
   },
   "/AI-Humanoid-Robotics-Books/docs/module2/sensor-simulation-7ec": {
-    "__comp": "17896441",
-    "content": "3e04ac23"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-2-sensor-simulation-3-e-0-1a3"
   },
   "/AI-Humanoid-Robotics-Books/docs/module2/unity-rendering-28e": {
-    "__comp": "17896441",
-    "content": "6b3af4c5"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-2-unity-rendering-6-b-3-0cb"
   },
   "/AI-Humanoid-Robotics-Books/docs/module3/-94d": {
-    "__comp": "17896441",
-    "content": "2e9d9707"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-3-2-e-9-31e"
   },
   "/AI-Humanoid-Robotics-Books/docs/module3/hands-on-lab-eb9": {
-    "__comp": "17896441",
-    "content": "09854b46"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-3-hands-on-lab-098-aeb"
   },
   "/AI-Humanoid-Robotics-Books/docs/module3/isaac-ros-e06": {
-    "__comp": "17896441",
-    "content": "0722914e"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-3-isaac-ros-072-d31"
   },
   "/AI-Humanoid-Robotics-Books/docs/module3/isaac-sim-16b": {
-    "__comp": "17896441",
-    "content": "3290c55d"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-3-isaac-sim-329-112"
   },
   "/AI-Humanoid-Robotics-Books/docs/module3/nav2-7a5": {
-    "__comp": "17896441",
-    "content": "3646a2a8"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-3-nav-2364-d4b"
   },
   "/AI-Humanoid-Robotics-Books/docs/module4/-9ac": {
-    "__comp": "17896441",
-    "content": "9b8695b8"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-4-9-b-8-af9"
   },
   "/AI-Humanoid-Robotics-Books/docs/module4/capstone-project-2cc": {
-    "__comp": "17896441",
-    "content": "3a6906b0"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-4-capstone-project-3-a-6-85f"
   },
   "/AI-Humanoid-Robotics-Books/docs/module4/cognitive-planning-e6b": {
-    "__comp": "17896441",
-    "content": "f343ee0e"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-4-cognitive-planningf-34-ca9"
   },
   "/AI-Humanoid-Robotics-Books/docs/module4/hands-on-lab-19c": {
-    "__comp": "17896441",
-    "content": "733f22ff"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-4-hands-on-lab-733-770"
   },
   "/AI-Humanoid-Robotics-Books/docs/module4/voice-to-action-ca1": {
-    "__comp": "17896441",
-    "content": "ada70e4a"
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---ai-humanoid-robotics-books-docs-module-4-voice-to-actionada-479"
   },
   "/AI-Humanoid-Robotics-Books/-a37": {
-    "__comp": "c4f5d8e4",
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
     "__context": {
-      "plugin": "a7456010"
+      "plugin": "plugin---ai-humanoid-robotics-books-a-74-0ed"
     },
-    "config": "5e9f5e1a"
+    "config": "config---ai-humanoid-robotics-books-5-e-9-075"
   }
 }
