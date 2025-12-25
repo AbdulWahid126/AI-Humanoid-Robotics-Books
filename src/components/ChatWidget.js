@@ -7,13 +7,25 @@ export default function ChatWidget() {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [selectedText, setSelectedText] = useState('');
+    const [isClient, setIsClient] = useState(false);
     const messagesEndRef = useRef(null);
 
-    // API endpoint - update this with your deployed backend URL
-    const API_URL = 'https://rag-chatbot-backend-production-ab2c.up.railway.app';
+    // Determine API URL based on environment
+    const API_URL = typeof window !== 'undefined'
+        ? window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:8000'
+            : process.env.REACT_APP_API_URL || 'https://rag-chatbot-backend-production-ab2c.up.railway.app'  // Production backend URL
+        : 'http://localhost:8000'; // Default fallback
 
-    // Capture text selection
+    // Initialize client-side only
     useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    // Capture text selection (only on client side)
+    useEffect(() => {
+        if (typeof window === 'undefined' || !isClient) return;
+
         const handleSelection = () => {
             const selection = window.getSelection().toString().trim();
             if (selection && selection.length > 0 && selection.length < 500) {
@@ -23,15 +35,17 @@ export default function ChatWidget() {
 
         document.addEventListener('mouseup', handleSelection);
         return () => document.removeEventListener('mouseup', handleSelection);
-    }, []);
+    }, [isClient]);
 
     // Auto-scroll to bottom
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages]);
+        if (isClient && messagesEndRef.current) {
+            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages, isClient]);
 
     const sendMessage = async () => {
-        if (!input.trim()) return;
+        if (!input.trim() || !isClient) return;
 
         const userMessage = { role: 'user', content: input };
         setMessages(prev => [...prev, userMessage]);
@@ -41,7 +55,9 @@ export default function ChatWidget() {
         try {
             const response = await fetch(`${API_URL}/api/chat`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
                     query: input,
                     selected_text: selectedText || null
@@ -49,14 +65,14 @@ export default function ChatWidget() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to get response');
+                throw new Error(`Failed to get response: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
             const assistantMessage = {
                 role: 'assistant',
                 content: data.response,
-                sources: data.sources
+                sources: data.sources || []
             };
 
             setMessages(prev => [...prev, assistantMessage]);
@@ -65,7 +81,7 @@ export default function ChatWidget() {
             console.error('Chat error:', error);
             const errorMessage = {
                 role: 'assistant',
-                content: '❌ Sorry, I encountered an error. Please make sure the backend is running.'
+                content: `❌ Sorry, I encountered an error. ${error.message.includes('Failed to fetch') ? 'Please make sure the backend is running.' : error.message}`
             };
             setMessages(prev => [...prev, errorMessage]);
         } finally {
@@ -79,6 +95,11 @@ export default function ChatWidget() {
             sendMessage();
         }
     };
+
+    // Don't render anything during SSR
+    if (!isClient) {
+        return null;
+    }
 
     return (
         <>
@@ -132,7 +153,7 @@ export default function ChatWidget() {
                                 </div>
                                 {msg.sources && msg.sources.length > 0 && (
                                     <div className={styles.sources}>
-                                        <small>📚 Sources: {msg.sources.map(s => s.module).join(', ')}</small>
+                                        <small>📚 Sources: {msg.sources.map(s => s.module || s.chapter || 'Unknown').join(', ')}</small>
                                     </div>
                                 )}
                             </div>
